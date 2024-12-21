@@ -5,7 +5,7 @@
 int main()
 {
 	char stat[256];
-	char i = 0;
+	int i;
 	float operand1, operand2, out;
 
 	while (1) 
@@ -16,15 +16,23 @@ int main()
 
 		fgets(stat, sizeof(stat), stdin);
 		printf("You input: %s\n", stat);
-		printf("calculating...");
+		/*printf("calculating..."); */
 
 		while ((getchar()) != '\n');
-		switch (char) 
+		switch (i) 
 		{
-			case 'h9':
+			case 'h':
 				printf("Input a pitcher's hits allowed\n");
 				scanf("%f", &operand1);
 		  		printf("Input the same pitcher's innings pitched");
+				scanf("%f", &operand2);
+				out = (operand1 / operand2) * 9;
+				printf("This pitcher's H/9 is: %f\n", out);
+				break;
+			case 'r':
+				printf("Input a pitcher's home runs allowed\n");
+				scanf("%f", &operand1);
+				printf("Input the same pitcher's innings pitched");
 				scanf("%f", &operand2);
 				out = (operand1 / operand2) * 9;
 				printf("This pitcher's H/9 is: %f\n", out);
