@@ -1,48 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+float calculatehr9(float ip, float hr) {
+	return (hr / ip) * 9;
+}
+
+float calculateh9(float hits, float ip) {
+	return (hits / ip ) * 9;
+}
+
+// Need to adjust for ballpark. 
+int calculateOPSPlus (float leagueOBP, float OBP, float leagueSLG, float SLG) {
+	return 100 * ((OBP / leagueOBP) + (SLG / leagueSLG) - 1);
+}
 
 int main()
 {
-	char stat[256];
-	int i;
-	float operand1, operand2, out;
+	float ip, hr;
 
-	while (1) 
-	{
-		printf("\nselect which sabr metric to calculate\n");
-		printf("available choices are: \n");
-		printf("exit by typing 'done'\n");
+	printf("Enter innings pitched: ");
+	scanf("%f", &ip);
 
-		fgets(stat, sizeof(stat), stdin);
-		printf("You input: %s\n", stat);
-		/*printf("calculating..."); */
+	printf("Enter home runs allowed: ");
+	scanf("%f", &hr);
 
-		while ((getchar()) != '\n');
-		switch (i) 
-		{
-			case 'h':
-				printf("Input a pitcher's hits allowed\n");
-				scanf("%f", &operand1);
-		  		printf("Input the same pitcher's innings pitched");
-				scanf("%f", &operand2);
-				out = (operand1 / operand2) * 9;
-				printf("This pitcher's H/9 is: %f\n", out);
-				break;
-			case 'r':
-				printf("Input a pitcher's home runs allowed\n");
-				scanf("%f", &operand1);
-				printf("Input the same pitcher's innings pitched");
-				scanf("%f", &operand2);
-				out = (operand1 / operand2) * 9;
-				printf("This pitcher's H/9 is: %f\n", out);
-				break;
-		}
+	float hr9 = calculatehr9(ip, hr);
 
-		break;
+	printf("This pitcher's home runs per 9 is %.2f:\n", hr9);
 
-		exit(0);
-	}
-
+	int opsPlus = calculateOPSPlus(.315, .394, .399, .379);
+	printf ("Brendan Donvan's OPS plus is: %i:\n", opsPlus);
 	return 0;
 }
