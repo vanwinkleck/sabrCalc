@@ -13,10 +13,12 @@ int calculateOPSPlus (float leagueOBP, float OBP, float leagueSLG, float SLG) {
 	return 100 * ((OBP / leagueOBP) + (SLG / leagueSLG) - 1);
 }
 
-// This isn't working correctly
-int calculateERAPlus(int parkFactor, float leagueERA, float ERA) {
-	return 100 * leagueERA / ERA * parkFactor;
+// I'm pretty sure this is correct now, I'm just missing the actual park factor baseballref uses. 
+int calculateERAPlus(float parkFactor, float leagueERA, float ERA) {
+	int ERAPlus = (leagueERA * parkFactor) * 100 / ERA;
+	return ERAPlus;
 }
+
 
 
 
@@ -37,7 +39,7 @@ int main()
 	int opsPlus = calculateOPSPlus(.315, .394, .399, .379);
 	printf ("Brendan Donvan's OPS plus is: %i:\n", opsPlus); */ 
 
-	float eraPlus = calculateERAPlus(100, 4.02, 3.51);
-	printf ("Sonny Gray's ERA+ is: %.2f:\n", eraPlus);
+	int eraPlus = calculateERAPlus(1.00, 4.02, 3.51);
+	printf ("Sonny Gray's ERA+ is: %d:\n", eraPlus);
 	return 0;
 }
