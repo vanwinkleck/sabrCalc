@@ -8,19 +8,21 @@ float calculateh9(float hits, float ip) {
 	return (hits / ip ) * 9;
 }
 
+float calculateOnBase(double hits, double walks, double HBP, double atBats, double sacFly) {
+	return (hits + walks + HBP) / (atBats + walks + HBP + sacFly); 
+}
+
 double calculateTotalBases(int singles, int doubles, int triples, int homeRuns) {
 	return singles + (doubles * 2) + (triples * 3) + (homeRuns * 4);
 };
-
-// Todo 
-float calculateOPS(float onBase, float slug) {
-	return 0;
-}
 
 float calculateSlug(int singles, int doubles, int triples, int HR, int atBats) {
 	return calculateTotalBases(singles, doubles, triples, HR) / atBats;
 }
 
+float calculateOPS(double singles, double doubles, double triples, double HR, double hits, double walks, double HBP, double atBats, double sacFly) {
+	return calculateSlug(singles, doubles, triples, HR, atBats) + calculateOnBase(hits, walks, HBP, atBats, sacFly);
+}
 // Need to adjust for ballpark. 
 int calculateOPSPlus (float leagueOBP, float OBP, float leagueSLG, float SLG) {
 	return 100 * ((OBP / leagueOBP) + (SLG / leagueSLG) - 1);
@@ -31,9 +33,6 @@ int calculateERAPlus(float parkFactor, float leagueERA, float ERA) {
 	int ERAPlus = (leagueERA * parkFactor) * 100 / ERA;
 	return ERAPlus;
 }
-
-
-
 
 int main()
 {
@@ -55,7 +54,13 @@ int main()
 	int eraPlus = calculateERAPlus(1.00, 4.02, 3.51);
 	printf ("Sonny Gray's ERA+ is: %d:\n", eraPlus);*/ 
 
+	float onBase = calculateOnBase(163, 47, 13, 587, 5);
+	printf ("Brendan Donovan's onBase is: %.3f:\n", onBase);
+
 	float slug = calculateSlug(112, 34, 3, 14, 587);
-	printf ("Brendan Donovan's slugging is: %.3f:\n", slug);
+	printf ("Brendan Donovan's slugging is: %.3f\n", slug);
+
+	float ops = calculateOPS(112, 34, 3, 14, 163, 47, 13, 587, 5);
+	printf ("Brendan Donovan's ops is: %.3f\n", ops);
 	return 0;
 }
