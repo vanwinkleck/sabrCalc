@@ -34,7 +34,7 @@ int calculateERAPlus(float parkFactor, float leagueERA, float ERA) {
 	return ERAPlus;
 }
 
-int main()
+int test()
 {
 	/* float ip, hr;
 
