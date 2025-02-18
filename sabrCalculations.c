@@ -30,31 +30,18 @@ int calculateOPSPlus (float leagueOBP, float OBP, float leagueSLG, float SLG) {
 
 // I'm pretty sure this is correct now, I'm just missing the actual park factor baseballref uses. 
 int calculateERAPlus(float parkFactor, float leagueERA, float ERA) {
-	int ERAPlus = (leagueERA * parkFactor) * 100 / ERA;
-	return ERAPlus;
+  return (leagueERA * parkFactor) * 100 / ERA;
+}
+
+float calculateBABIP(double hits, double HR, double atBats, double SO, double SF)
+{
+  return (hits - HR) / (atBats - SO - HR + SF);
 }
 
 int test()
 {
-	/* float ip, hr;
-
-	printf("Enter innings pitched: ");
-	scanf("%f", &ip);
-
-	printf("Enter home runs allowed: ");
-	scanf("%f", &hr);
-
-	float hr9 = calculatehr9(ip, hr);
-
-	printf("This pitcher's home runs per 9 is %.2f:\n", hr9);
-
-	int opsPlus = calculateOPSPlus(.315, .394, .399, .379);
-	printf ("Brendan Donvan's OPS plus is: %i:\n", opsPlus); 
-
-	int eraPlus = calculateERAPlus(1.00, 4.02, 3.51);
-	printf ("Sonny Gray's ERA+ is: %d:\n", eraPlus);*/ 
-
-	float onBase = calculateOnBase(163, 47, 13, 587, 5);
+	
+  float onBase = calculateOnBase(163, 47, 13, 587, 5);
 	printf ("Brendan Donovan's onBase is: %.3f:\n", onBase);
 
 	float slug = calculateSlug(112, 34, 3, 14, 587);
@@ -62,5 +49,6 @@ int test()
 
 	float ops = calculateOPS(112, 34, 3, 14, 163, 47, 13, 587, 5);
 	printf ("Brendan Donovan's ops is: %.3f\n", ops);
+
 	return 0;
 }
