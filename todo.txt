@@ -1,5 +1,5 @@
-Need to move to structs in batting caluclations.
-
 Find a way to import league wide numbers 
 
 Find a way to import player numbers
+
+Retrosheet integration, database format/
