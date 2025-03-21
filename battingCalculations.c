@@ -10,6 +10,7 @@ struct playerNumbers {
   double BB;
   double HBP;
   double atBats;
+  double PA;
   double SF;
   double SO;
   double singles;
@@ -44,6 +45,10 @@ float calculateBABIP(struct playerNumbers player)
   return (player.hits - player.HR) / (player.atBats - player.SO - player.HR + player.SF);
 }
 
+float calculateWalkRate(struct playerNumbers player) {
+  return (player.BB / player.PA) * 100;
+}
+
 int main()
 {
 
@@ -55,6 +60,7 @@ int main()
   donny.BB = 47;
   donny.HBP = 13;
   donny.atBats = 587;
+  donny.PA = 652;
   donny.SF = 5;
   donny.SO = 81;
   donny.singles = 112;
@@ -76,6 +82,9 @@ int main()
 
   int opsPlus = calculateOPSPlus(donny, year);
   printf ("Brendan Donovan's 2024 OPS+ is: %i\n", opsPlus);
+
+  double walkRate = calculateWalkRate(donny);
+  printf ("Brendan Donovan's 2024 walk rate is: %.2f%%\n", walkRate);
 
 	return 0;
 }
