@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-struct leagueNumbers{
+struct leagueHittingNumbers{
   double leagueOBP;
   double leagueSLG;
 };
@@ -36,7 +36,7 @@ float calculateOPS(struct playerNumbers player) {
 	return calculateSlug(player) + calculateOnBase(player);
 }
 // Need to adjust for ballpark. 
-int calculateOPSPlus (struct playerNumbers player, struct leagueNumbers lg) {
+int calculateOPSPlus (struct playerNumbers player, struct leagueHittingNumbers lg) {
 	return 100 * (calculateOnBase(player) / lg.leagueOBP + calculateSlug(player) / lg.leagueSLG - 1);
 }
 
@@ -53,7 +53,7 @@ int main()
 {
 
   struct playerNumbers donny;
-  struct leagueNumbers year;
+  struct leagueHittingNumbers year;
   int parkFactor = 98;
   
   donny.hits = 163;

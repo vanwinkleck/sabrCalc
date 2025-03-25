@@ -1,6 +1,6 @@
 #include <stdio.h>
 
- struct leagueNumbers {
+ struct leaguePitchingNumbers {
   float leagueERA;
   double leagueHRAllowed;
   double leagueBBAllowed;
@@ -28,7 +28,7 @@ float calculateH9(struct pitcherNumbers pitcher) {
 	return ( pitcher.HitsAllowed / pitcher.IP ) * 9;
 }
 
-float calculateFIPConstant(struct leagueNumbers year)
+float calculateFIPConstant(struct leaguePitchingNumbers year)
 {
   return year.leagueERA - (((year.leagueHRAllowed * 13) + (3 * (year.leagueBBAllowed + year.leagueHBPAllowed)) - (2 * year.leagueK)) / year.leagueIP); 
 }
@@ -47,7 +47,7 @@ int calculateERAPlus(float parkFactor, float leagueERA, float ERA) {
 
 int main() {
 
-  struct leagueNumbers s2024;
+  struct leaguePitchingNumbers s2024;
   struct pitcherNumbers gray;
 
   s2024.leagueERA = 4.07;
