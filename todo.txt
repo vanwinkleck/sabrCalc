@@ -3,3 +3,5 @@ Find a way to import league wide numbers
 Find a way to import player numbers
 
 Retrosheet integration, database format/
+
+statcast - https://baseballsavant.mlb.com/csv-docs
